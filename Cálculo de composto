@@ -1,0 +1,27 @@
+concentração = float(input("Digite a concentração do composto em mg:"))
+num_animais = int(input("Digite a quantidade de animais do seu grupo experimental: "))
+pesos = []
+
+for i in range(num_animais):
+    valor_peso = float(input(f"Digite o peso do animal {i+1} em gramas: "))
+    pesos.append(valor_peso)  
+
+soma = sum(pesos)
+media = soma / num_animais
+
+# Exemplo de cálculo da quantidade base necessária
+quantidade_composto = (concentração * media) / 1000  
+quantidade_total = quantidade_composto * num_animais
+quantidade_acrescimo = quantidade_total * fator
+
+
+margem = int(input("Digite a porcentagem extra desejada (ex: 10 para 10%): "))
+
+acrescimo = margem / 100
+fator = 1 + acrescimo
+quantidade_final = quantidade_total * fator
+
+
+print(f"Quantidade que um animal irá receber: {quantidade_composto:.2f} mg")
+print(f"Quantidade total para {num_animais} animais: {quantidade_total:.2f} mg")
+print(f"Quantidade final com acréscimo de {margem}%: {quantidade_final:.2f} mg")
