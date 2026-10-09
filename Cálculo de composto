@@ -9,19 +9,21 @@ for i in range(num_animais):
 soma = sum(pesos)
 media = soma / num_animais
 
-# Exemplo de cálculo da quantidade base necessária
-quantidade_composto = (concentração * media) / 1000  
-quantidade_total = quantidade_composto * num_animais
-quantidade_acrescimo = quantidade_total * fator
-
-
 margem = int(input("Digite a porcentagem extra desejada (ex: 10 para 10%): "))
-
 acrescimo = margem / 100
 fator = 1 + acrescimo
-quantidade_final = quantidade_total * fator
 
+# Exemplo de cálculo da quantidade base necessária
+quantidade_total = quantidade_composto * num_animais
+quantidade_final = quantidade_total * fator
+quantidade_composto = (concentração * media) / 1000  
+quantidade_acrescimo = quantidade_total * fator
+
+# Exemplo de Cáculo de volume necessário para diluição
+concentracao_solução = (float(quantidade_composto) / 0.2)
+volume_final = quantidade_final / concentracao_solução 
 
 print(f"Quantidade que um animal irá receber: {quantidade_composto:.2f} mg")
 print(f"Quantidade total para {num_animais} animais: {quantidade_total:.2f} mg")
 print(f"Quantidade final com acréscimo de {margem}%: {quantidade_final:.2f} mg")
+print(f"Volume final necessário para diluição: {volume_final:.2f} mL")
