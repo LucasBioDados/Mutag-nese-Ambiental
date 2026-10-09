@@ -1,4 +1,5 @@
 import streamlit as st
+import pandas as pd
 
 st.title("Cálculo de Composto para Animais")
 
@@ -63,3 +64,48 @@ st.write(f"**Quantidade por animal (média):** {quantidade_composto:.2f} mg")
 st.write(f"**Quantidade total para {int(num_animais)} animais:** {quantidade_total:.2f} mg")
 st.write(f"**Quantidade final com acréscimo de {margem:.0f}%:** {quantidade_final:.2f} mg")
 st.success(f"**Volume final necessário para diluição:** {volume_final:.2f} mL")
+
+# --- RECURSO DE REGISTRO E VALIDAÇÃO DE DADOS ---
+st.divider()
+st.subheader(" Registro de Conferência")
+
+if st.button("Gerar Relatório de Dados Inseridos"):
+    # Montagem do resumo de dados
+    dados_gerais = {
+        "Parâmetro": [
+            "Concentração do Composto (mg/kg)",
+            "Nº de Animais no Grupo",
+            "Média dos Pesos (g)",
+            "Margem Extra (%)",
+            "Dose por Animal (mg)",
+            "Volume Final Diluição (mL)",
+        ],
+        "Valor Inserido / Calculado": [
+            f"{concentracao:.2f}",
+            f"{int(num_animais)}",
+            f"{media:.2f}",
+            f"{margem:.0f}%",
+            f"{quantidade_composto:.2f}",
+            f"{volume_final:.2f}",
+        ],
+    }
+
+    # Tabela com o peso individual de cada animal
+    df_pesos = pd.DataFrame(
+        {"Animal ID": [f"Animal {i+1}" for i in range(len(pesos))], "Peso (g)": pesos}
+    )
+
+    st.markdown("### 1. Parâmetros Configurados")
+    st.table(pd.DataFrame(dados_gerais))
+
+    st.markdown("### 2. Pesos Individuais Registrados")
+    st.dataframe(df_pesos, use_container_width=True)
+
+    # Criação de um arquivo CSV para download (para ata de laboratório/auditoria)
+    csv_geral = df_pesos.to_csv(index=False).encode("utf-8")
+    st.download_button(
+        label=" Baixar Relatório de Pesos em CSV",
+        data=csv_geral,
+        file_name="registro_pesos_experimento.csv",
+        mime="text/csv",
+    )
