@@ -16,6 +16,12 @@ num_animais = st.number_input(
     step=1,
     value=1,
 )
+margem = st.number_input(
+    "Digite a porcentagem extra desejada (ex: 10 para 10%):",
+    min_value=0.0,
+    step=1.0,
+    value=10.0,
+)
 
 # Entrada do peso de cada animal
 pesos = []
@@ -29,12 +35,7 @@ for i in range(int(num_animais)):
     )
     pesos.append(valor_peso)
 
-margem = st.number_input(
-    "Digite a porcentagem extra desejada (ex: 10 para 10%):",
-    min_value=0.0,
-    step=1.0,
-    value=10.0,
-)
+
 
 # Cálculos
 soma = sum(pesos)
