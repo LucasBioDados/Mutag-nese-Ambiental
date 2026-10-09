@@ -60,5 +60,5 @@ st.subheader("Resultados:")
 
 st.write(f"**Quantidade por animal (média):** {quantidade_composto:.2f} mg")
 st.write(f"**Quantidade total para {int(num_animais)} animais:** {quantidade_total:.2f} mg")
-st.write(f"**Volume final necessário para diluição:** {volume_final:.2f} mL")
-st.success(f"**Quantidade final com acréscimo de {margem:.0f}%:** {quantidade_final:.2f} mg")
+st.write(f"**Quantidade final com acréscimo de {margem:.0f}%:** {quantidade_final:.2f} mg")
+st.success(f"**Volume final necessário para diluição:** {volume_final:.2f} mL")
