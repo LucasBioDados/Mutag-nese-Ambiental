@@ -65,7 +65,9 @@ st.write(
 st.swrite(
     f"**Quantidade final com acréscimo de {margem:.0f}%:** {quantidade_final:.2f} mg"
 )
-st.sucess(f"**Volume final necessário para diluição:** {volume_final:.2f} mL")
+st.suces(
+    f"**Volume final necessário para diluição:** {volume_final:.2f} mL"
+)
 
 # --- REGISTRO E VALIDAÇÃO DE DADOS ---
 st.divider()
