@@ -49,8 +49,8 @@ quantidade_total = quantidade_composto * num_animais  # mg para o grupo
 quantidade_final = quantidade_total * fator  # mg com margem de segurança
 
 if quantidade_composto > 0:
-    concentracao_solucao = quantidade_composto / 0.2
-    volume_final = quantidade_final / concentracao_solucao
+    concentracao_solucao = quantidade_composto / 0.2 #concentração mínima
+    volume_final = quantidade_final / concentracao_solucao #volume final
 else:
     volume_final = 0.0
 
@@ -62,16 +62,14 @@ st.write(f"**Quantidade por animal (média):** {quantidade_composto:.2f} mg")
 st.write(
     f"**Quantidade total para {int(num_animais)} animais:** {quantidade_total:.2f} mg"
 )
-st.swrite(
-    f"**Quantidade final com acréscimo de {margem:.0f}%:** {quantidade_final:.2f} mg"
-)
-st.suces(
+st.write(f"**Quantidade final com acréscimo de {margem:.0f}%:** {quantidade_final:.2f} mg")
+st.success(
     f"**Volume final necessário para diluição:** {volume_final:.2f} mL"
 )
 
-# --- REGISTRO E VALIDAÇÃO DE DADOS ---
+#  REGISTRO E VALIDAÇÃO DE DADOS 
 st.divider()
-st.subheader("Registro de Conferência")
+st.subheader(" Registro de Conferência")
 
 if st.button("Gerar Relatório de Dados Inseridos"):
     # 1. Resumo na tela do Streamlit
@@ -112,9 +110,9 @@ if st.button("Gerar Relatório de Dados Inseridos"):
     st.dataframe(df_pesos, use_container_width=True)
 
     # 2. Montagem do CSV completo com separador ';'
-    # substituido o ponto '.' por vírgula ',' para ser 100% compatível com o Excel em português
+    # Foi substituido o ponto '.' por vírgula ',' para ser 100% compatível com o Excel em português
     linhas_csv = [
-        "PARAMETROS E CONFIGURACOES DO EXPERIMENTO;",
+        "--- PARAMETROS E CONFIGURACOES DO EXPERIMENTO ---;",
         f"Concentração do Composto (mg/kg);{concentracao:.2f}".replace(".", ","),
         f"Quantidade de Animais;{int(num_animais)}",
         f"Média dos Pesos (g);{media:.2f}".replace(".", ","),
