@@ -62,10 +62,10 @@ st.write(f"**Quantidade por animal (média):** {quantidade_composto:.2f} mg")
 st.write(
     f"**Quantidade total para {int(num_animais)} animais:** {quantidade_total:.2f} mg"
 )
-st.write(f"**Volume final necessário para diluição:** {volume_final:.2f} mL")
-st.success(
+st.swrite(
     f"**Quantidade final com acréscimo de {margem:.0f}%:** {quantidade_final:.2f} mg"
 )
+st.sucess(f"**Volume final necessário para diluição:** {volume_final:.2f} mL")
 
 # --- REGISTRO E VALIDAÇÃO DE DADOS ---
 st.divider()
@@ -112,7 +112,7 @@ if st.button("Gerar Relatório de Dados Inseridos"):
     # 2. Montagem do CSV completo com separador ';'
     # substituido o ponto '.' por vírgula ',' para ser 100% compatível com o Excel em português
     linhas_csv = [
-        "--- PARAMETROS E CONFIGURACOES DO EXPERIMENTO ---;",
+        "PARAMETROS E CONFIGURACOES DO EXPERIMENTO;",
         f"Concentração do Composto (mg/kg);{concentracao:.2f}".replace(".", ","),
         f"Quantidade de Animais;{int(num_animais)}",
         f"Média dos Pesos (g);{media:.2f}".replace(".", ","),
