@@ -16,7 +16,7 @@ num_animais = int(
 
 pesos = []
 
-# Loop usando key única para cada input
+
 for i in range(num_animais):
   valor_peso = st.number_input(
       f"Digite o peso do animal {i+1} em gramas:", step=0.1, key=f"peso_{i}"
@@ -39,6 +39,8 @@ fator = 1 + acrescimo
 quantidade_composto = (concentração * media) / 1000  # Quantidade por animal
 quantidade_total = quantidade_composto * num_animais  # Quantidade para o grupo
 quantidade_final = quantidade_total * fator  # Total com margem de segurança
+concentracao_solução = (float(quantidade_composto) / 0.2) #Concentração mínima 
+volume_final = quantidade_final / concentracao_solução #Volume final com a margem
 
 # Exibição dos resultados na interface do Streamlit
 st.divider()
@@ -48,6 +50,10 @@ st.write(
 )
 st.write(
     f"**Quantidade total para {num_animais} animais:** {quantidade_total:.2f}"
+    " mg"
+)
+st.write(
+    f"**Quantidade final necessária para diluição {volume_final.2f}"
     " mg"
 )
 st.success(
